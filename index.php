@@ -1,4 +1,11 @@
+<?php 
 
+session_start();
+if (isset($_SESSION['user'])) {
+   header("location: dashboard.php");
+}
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -8,6 +15,7 @@
     <link rel="stylesheet" href="css/login.css">
 </head>
 <body>
-    
+    <h1>Connectez-vous !</h1>
+    <a href="login.php">Se Connecter</a>
 </body>
 </html>
