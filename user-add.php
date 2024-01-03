@@ -6,6 +6,8 @@ session_start();
 if (!isset($_SESSION['user'])) {
     header("location: login.php");
 }
+
+// var_dump($_SESSION['user']);
 $_SESSION['table'] = 'users';
 $user = $_SESSION["user"];
 

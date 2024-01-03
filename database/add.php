@@ -2,8 +2,18 @@
 
 session_start();
 
+include_once 'connexion.php';
+
 $table_name = $_SESSION['table'];
 // $_SESSION['table'] = '';
+
+
+if (
+    !empty($_POST["first_name"])
+    && !empty($_POST["last_name"])
+    && !empty($_POST["email"])
+    && !empty($_POST["password"])
+) {
 
 $first_name = $_POST['first_name'];
 $last_name = $_POST['last_name'];
@@ -18,7 +28,6 @@ $command = "INSERT INTO $table_name (first_name, last_name, email, password, cre
 VALUES ('".$first_name."', '".$last_name."', '".$email."', '".$encrypted."', NOW(), NOW())";
 
 
-include_once 'connexion.php';
 
 $conn->exec($command);
     $response = [
@@ -36,5 +45,9 @@ $conn->exec($command);
 
 $_SESSION['response'] = $response;
 header('location: ../user-add.php');
+}
+else{
+    echo 'Champ manquants';
+}
 
 ?>
